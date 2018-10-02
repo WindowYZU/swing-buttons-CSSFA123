@@ -6,10 +6,14 @@
 package lendle.courses.wp.buttonsamples;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JToggleButton;
 import javax.swing.WindowConstants;
 
 /**
@@ -28,15 +32,34 @@ public class RadioButtonSample {
         frame.setLayout(new FlowLayout());
         JRadioButton radio1 = new JRadioButton("radio1");
         JRadioButton radio2 = new JRadioButton("radio2");
-        
+        JRadioButton checkBox=new JRadioButton("check1");
+        JToggleButton toggleButton=new JToggleButton("toggle1");
         frame.add(radio1);
         frame.add(radio2);
+        frame.add(checkBox);
+        frame.add(toggleButton);
+        ActionListener listener=new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, ""+radio1.isSelected()+", "+radio2.isSelected()+", "+checkBox.isSelected()+", "+toggleButton.isSelected());
+            }
+            
+        };
+        radio1.addActionListener(listener);
+        radio2.addActionListener(listener);
+        checkBox.addActionListener(listener);
+        toggleButton.addActionListener(listener);
         //建立 ButtonGroup，把 radio1, radio2 加到 ButtonGroup
         
         ////////////////////////////////////////////////////
         
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
     }
 
 }
